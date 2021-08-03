@@ -12,7 +12,7 @@ namespace MastermindLibrary
         #region private methods
 
         /// <summary>
-        /// checks the input arrays and returns a error message if needed
+        /// checks the input arrays and returns an error message if needed
         /// </summary>
         /// <param name="secret">array with secrets</param>
         /// <param name="guess">array with guesses</param>
