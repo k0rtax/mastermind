@@ -49,7 +49,7 @@ namespace MastermindLibraryTest
             //Arrange
             Farbe?[] secret = {Farbe.Blau, Farbe.Braun};
             Farbe?[] guess = {Farbe.Grün, Farbe.Gelb};
-            string excpected = $"no {nameof(wellplaced)} and no {nameof(missplaced)}";
+            string excpected = $"no wellplaced and no misplaced";
 
             //Act
             string actual = MastermindGameLogic.GetGameResult(secret, guess);
@@ -59,15 +59,15 @@ namespace MastermindLibraryTest
         }
 
         /// <summary>
-        /// testmethod with only missplaced colors
+        /// testmethod with only misplaced colors
         /// </summary>
         [TestMethod]
-        public void TestMethodOnlyMissplaced()
+        public void TestMethodOnlyMisplaced()
         {
             //Arrange
             Farbe?[] secret = {Farbe.Blau, Farbe.Braun, Farbe.Rot};
             Farbe?[] guess = {Farbe.Braun, Farbe.Grün, Farbe.Blau};
-            string excpected = $"0 {nameof(wellplaced)} and 2 {nameof(missplaced)}";
+            string excpected = $"0 wellplaced and 2 misplaced";
 
             //Act
             string actual = MastermindGameLogic.GetGameResult(secret, guess);
@@ -85,7 +85,7 @@ namespace MastermindLibraryTest
             //Arrange
             Farbe?[] secret = {Farbe.Blau, Farbe.Braun};
             Farbe?[] guess = {Farbe.Grün, Farbe.Braun};
-            string excpected = $"1 {nameof(wellplaced)} and 0 {nameof(missplaced)}";
+            string excpected = $"1 wellplaced and 0 misplaced";
 
             //Act
             string actual = MastermindGameLogic.GetGameResult(secret, guess);
@@ -109,15 +109,15 @@ namespace MastermindLibraryTest
         }
 
         /// <summary>
-        /// testmethod with wellplaced and missplaced colors
+        /// testmethod with wellplaced and misplaced colors
         /// </summary>
         [TestMethod]
-        public void TestMethodWellplacedAndMissplaced()
+        public void TestMethodWellplacedAndMisplaced()
         {
             //Arrange
             Farbe?[] secret = {Farbe.Blau, Farbe.Braun, Farbe.Rot};
             Farbe?[] guess = {Farbe.Grün, Farbe.Braun, Farbe.Blau};
-            string excpected = $"1 {nameof(wellplaced)} and 1 {nameof(missplaced)}";
+            string excpected = $"1 wellplaced and 1 misplaced";
 
             //Act
             string actual = MastermindGameLogic.GetGameResult(secret, guess);
@@ -127,15 +127,15 @@ namespace MastermindLibraryTest
         }
 
         /// <summary>
-        /// testmethod with wellplaced und multiple missplaced colors
+        /// testmethod with wellplaced und multiple misplaced colors
         /// </summary>
         [TestMethod]
-        public void TestMethodWellplacedAndMultipleMissplaced()
+        public void TestMethodWellplacedAndMultipleMisplaced()
         {
             //Arrange
             Farbe?[] secret = {Farbe.Blau, Farbe.Braun, Farbe.Rot, Farbe.Grün, Farbe.Grün};
             Farbe?[] guess = {Farbe.Grün, Farbe.Braun, Farbe.Blau, Farbe.Rot, Farbe.Grün};
-            string excpected = $"2 {nameof(wellplaced)} and 3 {nameof(missplaced)}";
+            string excpected = $"2 wellplaced and 3 misplaced";
 
             //Act
             string actual = MastermindGameLogic.GetGameResult(secret, guess);
