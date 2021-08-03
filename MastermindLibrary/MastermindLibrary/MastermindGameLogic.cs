@@ -21,7 +21,7 @@ namespace MastermindLibrary
             if (secret.Length == 0 || guess.Length == 0)
                 return NoInputError;
 
-            return secret.Length != guess.Length ? MissmatchError : null;
+            return secret.Length != guess.Length ? MismatchError : null;
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace MastermindLibrary
                 if (hitsInSecret > hitsInGuess)
                     misplaced += hitsInGuess;
                 else if (hitsInGuess < hitsInSecret)
-                    misslaced += hitsInSecret;
+                    misplaced += hitsInSecret;
                 else
                     misplaced += hitsInSecret;
             }
