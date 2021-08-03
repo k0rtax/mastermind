@@ -13,7 +13,7 @@ namespace MastermindLibraryTest
         #region public methods
 
         /// <summary>
-        /// testmethod with different amount of values in both arrays
+        /// testmethod with different amount of colors in both arrays
         /// </summary>
         [TestMethod]
         public void TestMethodMissmatch()
@@ -27,7 +27,7 @@ namespace MastermindLibraryTest
         }
 
         /// <summary>
-        /// testmethod with no values in both arrays
+        /// testmethod with no colors in both arrays
         /// </summary>
         [TestMethod]
         public void TestMethodNoInput()
@@ -41,7 +41,7 @@ namespace MastermindLibraryTest
         }
 
         /// <summary>
-        /// testmethod without matches in bot arrays
+        /// testmethod without matches in both arrays
         /// </summary>
         [TestMethod]
         public void TestMethodNoMatches()
@@ -95,7 +95,7 @@ namespace MastermindLibraryTest
         }
 
         /// <summary>
-        /// testmethod with no input in the guess array
+        /// testmethod without guesses
         /// </summary>
         [TestMethod]
         public void TestMethodPartialNoInput()
