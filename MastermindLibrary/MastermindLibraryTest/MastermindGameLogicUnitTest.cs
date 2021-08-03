@@ -12,109 +12,133 @@ namespace MastermindLibraryTest
 
         #region public methods
 
+        /// <summary>
+        /// testmethod with different amount of values in both arrays
+        /// </summary>
         [TestMethod]
         public void TestMethodMissmatch()
         {
             //Arrange
-            Farbe?[] wellplaced = {Farbe.Blau, Farbe.Braun};
-            Farbe?[] missplaced = {Farbe.Blau};
+            Farbe?[] secret = {Farbe.Blau, Farbe.Braun};
+            Farbe?[] guess = {Farbe.Blau};
 
             //Act and Assert
-            StringAssert.Contains(MastermindGameLogic.GetGameResult(wellplaced, missplaced), MissmatchError);
+            StringAssert.Contains(MastermindGameLogic.GetGameResult(secret, guess), MissmatchError);
         }
 
+        /// <summary>
+        /// testmethod with no values in both arrays
+        /// </summary>
         [TestMethod]
         public void TestMethodNoInput()
         {
             //Arrange
-            Farbe?[] wellplaced = { };
-            Farbe?[] missplaced = { };
+            Farbe?[] secret = { };
+            Farbe?[] guess = { };
 
             //Act and Assert
-            StringAssert.Contains(MastermindGameLogic.GetGameResult(wellplaced, missplaced), NoInputError);
+            StringAssert.Contains(MastermindGameLogic.GetGameResult(secret, guess), NoInputError);
         }
 
+        /// <summary>
+        /// testmethod without matches in bot arrays
+        /// </summary>
         [TestMethod]
         public void TestMethodNoMatches()
         {
             //Arrange
-            Farbe?[] wellplaced = {Farbe.Blau, Farbe.Braun};
-            Farbe?[] missplaced = {Farbe.Grün, Farbe.Gelb};
+            Farbe?[] secret = {Farbe.Blau, Farbe.Braun};
+            Farbe?[] guess = {Farbe.GrÃ¼n, Farbe.Gelb};
             string excpected = $"no {nameof(wellplaced)} and no {nameof(missplaced)}";
 
             //Act
-            string actual = MastermindGameLogic.GetGameResult(wellplaced, missplaced);
+            string actual = MastermindGameLogic.GetGameResult(secret, guess);
 
             //Assert
             Assert.AreEqual(excpected, actual);
         }
 
+        /// <summary>
+        /// testmethod with only missplaced colors
+        /// </summary>
         [TestMethod]
         public void TestMethodOnlyMissplaced()
         {
             //Arrange
-            Farbe?[] wellplaced = {Farbe.Blau, Farbe.Braun, Farbe.Rot};
-            Farbe?[] missplaced = {Farbe.Braun, Farbe.Grün, Farbe.Blau};
+            Farbe?[] secret = {Farbe.Blau, Farbe.Braun, Farbe.Rot};
+            Farbe?[] guess = {Farbe.Braun, Farbe.GrÃ¼n, Farbe.Blau};
             string excpected = $"0 {nameof(wellplaced)} and 2 {nameof(missplaced)}";
 
             //Act
-            string actual = MastermindGameLogic.GetGameResult(wellplaced, missplaced);
+            string actual = MastermindGameLogic.GetGameResult(secret, guess);
 
             //Assert
             Assert.AreEqual(excpected, actual);
         }
 
+        /// <summary>
+        /// testmethod with only wellplaced colors
+        /// </summary>
         [TestMethod]
         public void TestMethodOnlyWellplaced()
         {
             //Arrange
-            Farbe?[] wellplaced = {Farbe.Blau, Farbe.Braun};
-            Farbe?[] missplaced = {Farbe.Grün, Farbe.Braun};
+            Farbe?[] secret = {Farbe.Blau, Farbe.Braun};
+            Farbe?[] guess = {Farbe.GrÃ¼n, Farbe.Braun};
             string excpected = $"1 {nameof(wellplaced)} and 0 {nameof(missplaced)}";
 
             //Act
-            string actual = MastermindGameLogic.GetGameResult(wellplaced, missplaced);
+            string actual = MastermindGameLogic.GetGameResult(secret, guess);
 
             //Assert
             Assert.AreEqual(excpected, actual);
         }
 
+        /// <summary>
+        /// testmethod with no input in the guess array
+        /// </summary>
         [TestMethod]
         public void TestMethodPartialNoInput()
         {
             //Arrange
-            Farbe?[] wellplaced = {Farbe.Blau, Farbe.Blau, Farbe.Schwarz};
-            Farbe?[] missplaced = { };
+            Farbe?[] secret = {Farbe.Blau, Farbe.Blau, Farbe.Schwarz};
+            Farbe?[] guess = { };
 
             //Act and Assert
-            StringAssert.Contains(MastermindGameLogic.GetGameResult(wellplaced, missplaced), NoInputError);
+            StringAssert.Contains(MastermindGameLogic.GetGameResult(secret, guess), NoInputError);
         }
 
+        /// <summary>
+        /// testmethod with wellplaced and missplaced colors
+        /// </summary>
         [TestMethod]
         public void TestMethodWellplacedAndMissplaced()
         {
             //Arrange
-            Farbe?[] wellplaced = {Farbe.Blau, Farbe.Braun, Farbe.Rot};
-            Farbe?[] missplaced = {Farbe.Grün, Farbe.Braun, Farbe.Blau};
+            Farbe?[] secret = {Farbe.Blau, Farbe.Braun, Farbe.Rot};
+            Farbe?[] guess = {Farbe.GrÃ¼n, Farbe.Braun, Farbe.Blau};
             string excpected = $"1 {nameof(wellplaced)} and 1 {nameof(missplaced)}";
 
             //Act
-            string actual = MastermindGameLogic.GetGameResult(wellplaced, missplaced);
+            string actual = MastermindGameLogic.GetGameResult(secret, guess);
 
             //Assert
             Assert.AreEqual(excpected, actual);
         }
 
+        /// <summary>
+        /// testmethod with wellplaced und multiple missplaced colors
+        /// </summary>
         [TestMethod]
         public void TestMethodWellplacedAndMultipleMissplaced()
         {
             //Arrange
-            Farbe?[] wellplaced = {Farbe.Blau, Farbe.Braun, Farbe.Rot, Farbe.Grün, Farbe.Grün};
-            Farbe?[] missplaced = {Farbe.Grün, Farbe.Braun, Farbe.Blau, Farbe.Rot, Farbe.Grün};
+            Farbe?[] secret = {Farbe.Blau, Farbe.Braun, Farbe.Rot, Farbe.GrÃ¼n, Farbe.GrÃ¼n};
+            Farbe?[] guess = {Farbe.GrÃ¼n, Farbe.Braun, Farbe.Blau, Farbe.Rot, Farbe.GrÃ¼n};
             string excpected = $"2 {nameof(wellplaced)} and 3 {nameof(missplaced)}";
 
             //Act
-            string actual = MastermindGameLogic.GetGameResult(wellplaced, missplaced);
+            string actual = MastermindGameLogic.GetGameResult(secret, guess);
 
             //Assert
             Assert.AreEqual(excpected, actual);
