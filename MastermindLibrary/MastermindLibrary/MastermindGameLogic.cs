@@ -11,6 +11,11 @@ namespace MastermindLibrary
 
         #region private methods
 
+        /// <summary>
+        /// checks the input arrays and returns a error message if needed
+        /// </summary>
+        /// <param name="secret">array with secrets</param>
+        /// <param name="guess">array with guesses</param>
         private static string CheckInput(Farbe?[] secret, Farbe?[] guess)
         {
             if (secret.Length == 0 || guess.Length == 0)
@@ -19,6 +24,11 @@ namespace MastermindLibrary
             return secret.Length != guess.Length ? MissmatchError : null;
         }
 
+        /// <summary>
+        /// returns the number of missplaced colors
+        /// </summary>
+        /// <param name="secret">array with secrets</param>
+        /// <param name="guess">array with guesses</param>
         private static int GetMissplaced(Farbe?[] secret, Farbe?[] guess)
         {
             int missplaced = 0;
@@ -41,6 +51,11 @@ namespace MastermindLibrary
             return missplaced;
         }
 
+        /// <summary>
+        /// returns the build result string
+        /// </summary>
+        /// <param name="wellplaced">number of wellplaced colors</param>
+        /// <param name="missplaced">number of missplaced colors</param>
         private static string GetResultString(int wellplaced, int missplaced)
         {
             return wellplaced switch
@@ -51,6 +66,11 @@ namespace MastermindLibrary
             };
         }
 
+        /// <summary>
+        /// returns the number of wellplaced colors
+        /// </summary>
+        /// <param name="secret">array with secrets</param>
+        /// <param name="guess">array with guesses</param>
         private static int GetWellplaced(Farbe?[] secret, Farbe?[] guess)
         {
             int wellplaced = 0;
@@ -71,6 +91,11 @@ namespace MastermindLibrary
 
         #region public methods
 
+        /// <summary>
+        /// returns the game result
+        /// </summary>
+        /// <param name="secret">array with secrets</param>
+        /// <param name="guess">array with guesses</param>
         public static string GetGameResult(Farbe?[] secret, Farbe?[] guess)
         {
             return CheckInput(secret, guess) ?? GetResultString(GetWellplaced(secret, guess), GetMissplaced(secret, guess));
