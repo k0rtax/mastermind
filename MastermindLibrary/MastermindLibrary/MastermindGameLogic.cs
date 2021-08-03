@@ -25,13 +25,13 @@ namespace MastermindLibrary
         }
 
         /// <summary>
-        /// returns the number of missplaced colors
+        /// returns the number of misplaced colors
         /// </summary>
         /// <param name="secret">array with secrets</param>
         /// <param name="guess">array with guesses</param>
-        private static int GetMissplaced(Farbe?[] secret, Farbe?[] guess)
+        private static int GetMisplaced(Farbe?[] secret, Farbe?[] guess)
         {
-            int missplaced = 0;
+            int misplaced = 0;
 
             Farbe?[] distinctArray = guess.Where(x => x != null).Distinct().ToArray();
 
@@ -41,28 +41,28 @@ namespace MastermindLibrary
                 int hitsInGuess = Array.FindAll(guess, x => x == distinctArray[i]).Length;
 
                 if (hitsInSecret > hitsInGuess)
-                    missplaced += hitsInGuess;
+                    misplaced += hitsInGuess;
                 else if (hitsInGuess < hitsInSecret)
-                    missplaced += hitsInSecret;
+                    misslaced += hitsInSecret;
                 else
-                    missplaced += hitsInSecret;
+                    misplaced += hitsInSecret;
             }
 
-            return missplaced;
+            return misplaced;
         }
 
         /// <summary>
         /// returns the build result string
         /// </summary>
         /// <param name="wellplaced">number of wellplaced colors</param>
-        /// <param name="missplaced">number of missplaced colors</param>
-        private static string GetResultString(int wellplaced, int missplaced)
+        /// <param name="misplaced">number of misplaced colors</param>
+        private static string GetResultString(int wellplaced, int misplaced)
         {
             return wellplaced switch
             {
-                0 when missplaced == 0 => //no hits
-                    $"no {nameof(wellplaced)} and no {nameof(missplaced)}",
-                _ => $"{wellplaced} {nameof(wellplaced)} and {missplaced} {nameof(missplaced)}"
+                0 when misplaced == 0 => //no hits
+                    $"no {nameof(wellplaced)} and no {nameof(misplaced)}",
+                _ => $"{wellplaced} {nameof(wellplaced)} and {misplaced} {nameof(misplaced)}"
             };
         }
 
@@ -98,7 +98,7 @@ namespace MastermindLibrary
         /// <param name="guess">array with guesses</param>
         public static string GetGameResult(Farbe?[] secret, Farbe?[] guess)
         {
-            return CheckInput(secret, guess) ?? GetResultString(GetWellplaced(secret, guess), GetMissplaced(secret, guess));
+            return CheckInput(secret, guess) ?? GetResultString(GetWellplaced(secret, guess), GetMisplaced(secret, guess));
         }
 
         #endregion
