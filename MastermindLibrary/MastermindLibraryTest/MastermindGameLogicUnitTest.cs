@@ -23,7 +23,7 @@ namespace MastermindLibraryTest
             Farbe?[] guess = {Farbe.Blau};
 
             //Act and Assert
-            StringAssert.Contains(MastermindGameLogic.GetGameResult(secret, guess), MissmatchError);
+            StringAssert.Contains(MastermindGameLogic.GetGameResult(secret, guess), MismatchError);
         }
 
         /// <summary>
